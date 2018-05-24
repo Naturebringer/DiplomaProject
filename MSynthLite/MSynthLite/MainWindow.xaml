@@ -42,11 +42,11 @@
                         </GroupBox.BorderBrush>
                     </GroupBox>
                     <!-- Buttons-->
-                    <Button Content="Play" HorizontalAlignment="Left" Margin="14,16,0,0" VerticalAlignment="Top" Width="81" Height="29" Click="Play_Click" FontFamily="MV Boli" />
+                    <Button Content="Play" HorizontalAlignment="Left" Margin="6,15,0,0" VerticalAlignment="Top" Width="94" Height="29" Click="Play_Click" FontFamily="MV Boli" />
 
                     <!-- Piano buttons-->
                     <!-- White-->
-                    <Button HorizontalAlignment="Left" Margin="14,511,0,0" VerticalAlignment="Top" Width="18" Height="153" Click="Button_Click_1"  >
+                    <Button Name="PButton1" HorizontalAlignment="Left" Margin="14,511,0,0" VerticalAlignment="Top" Width="18" Height="153" PreviewMouseLeftButtonDown="PButton1_PreviewMouseLeftButtonDown" LostFocus="PButton1_LostFocus" >
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FF6E6868" Offset="0"/>
@@ -755,44 +755,391 @@
                     </Button>
 
                     <!-- Text boxes-->
-                    <ComboBox Name="CoWaveType" HorizontalAlignment="Left" Margin="1004,173,0,0" VerticalAlignment="Top" Width="131" Height="29" SelectedIndex="0">
-                        <TextBlock>Sine</TextBlock>
-                        <TextBlock>Square</TextBlock>
-                        <TextBlock>Triangle</TextBlock>
-                        <TextBlock>Sawtooth</TextBlock>
-                    </ComboBox>
-                    <TextBox Name="TBasic_frequency" HorizontalAlignment="Left" Height="23" Margin="989,278,0,0" TextWrapping="Wrap" Text="Enter basic frequency..." VerticalAlignment="Top" Width="131"/>
-                    <GroupBox Header="Piano control" HorizontalAlignment="Left" Height="185" Margin="933,492,0,0" VerticalAlignment="Top" Width="464"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="937,99,0,0" TextWrapping="Wrap" Text="Unit of time..." VerticalAlignment="Top" Width="86"/>
-                    <TextBox Name="TTime" HorizontalAlignment="Left" Height="23" Margin="933,229,0,0" TextWrapping="Wrap" Text="Time" VerticalAlignment="Top" Width="40" RenderTransformOrigin="-0.125,-0.261"/>
-                    <Button Content="Assign keys" HorizontalAlignment="Left" Margin="948,511,0,0" VerticalAlignment="Top" Width="75" Height="25" RenderTransformOrigin="10.907,5.32"/>
+                    <TextBox Name="TBasic_frequency" HorizontalAlignment="Left" Height="31" Margin="434,199,0,0" TextWrapping="Wrap" Text="Enter basic frequency..." VerticalAlignment="Top" Width="131"/>
+                    <TextBox HorizontalAlignment="Left" Height="31" Margin="332,199,0,0" TextWrapping="Wrap" Text="Unit of time..." VerticalAlignment="Top" Width="86"/>
                     <GroupBox Header="General options" HorizontalAlignment="Left" Height="428" Margin="6,50,0,0" VerticalAlignment="Top" Width="185" FontFamily="Nueva Std Cond" FontSize="18"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="41,99,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" >
+                    <ComboBox Name="Generato_type" HorizontalAlignment="Left" Margin="41,99,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" >
                         <TextBlock>Simple</TextBlock>
                         <TextBlock>Note table</TextBlock>
                         <TextBlock>Oscillators</TextBlock>
                     </ComboBox>
                     <Label Content="Method of generation" HorizontalAlignment="Left" Margin="37,71,0,0" VerticalAlignment="Top" FontSize="14"/>
-                    <Button Content="Start write" HorizontalAlignment="Left" Margin="218,16,0,0" VerticalAlignment="Top" Width="103" Height="29" FontFamily="MV Boli"/>
-                    <Button Content="Stop write" HorizontalAlignment="Left" Margin="332,15,0,0" VerticalAlignment="Top" Width="99" Height="29" FontFamily="MV Boli"/>
-                    <Button Content="Show visual" HorizontalAlignment="Left" Margin="109,16,0,0" VerticalAlignment="Top" Width="93" Height="29" FontFamily="MV Boli"/>
-                    <Button Content="Save" HorizontalAlignment="Left" Margin="439,16,0,0" VerticalAlignment="Top" Width="103" Height="29" FontFamily="MV Boli"/>
-                    <Button Content="Exit" HorizontalAlignment="Left" Margin="551,16,0,0" VerticalAlignment="Top" Width="103" Height="29" FontFamily="MV Boli"/>
-                    <GroupBox Header="Simple" HorizontalAlignment="Left" Height="84" Margin="201,50,0,0" VerticalAlignment="Top" Width="396" FontSize="18" FontFamily="Nueva Std Cond"/>
-                    <Button Content="Button" HorizontalAlignment="Left" Margin="890,401,0,0" VerticalAlignment="Top" Width="75" Click="B1"/>
-                    <GroupBox Header="Note table" HorizontalAlignment="Left" Height="114" Margin="201,158,0,0" VerticalAlignment="Top" Width="396" FontFamily="Nueva Std Cond" FontSize="18"/>
-                    <Button Name="Stop_playing" Content="Stop playing" HorizontalAlignment="Left" Margin="213,85,0,0" VerticalAlignment="Top" Width="74" FontSize="12" FontFamily="MV Boli" Height="31"/>
-                    <ComboBox Name="WaveTypeSimple" HorizontalAlignment="Left" Margin="302,85,0,0" VerticalAlignment="Top" Width="87" Height="31" SelectedIndex="0">
+                    <Button Content="Start write" HorizontalAlignment="Left" Margin="295,16,0,0" VerticalAlignment="Top" Width="103" Height="29" FontFamily="MV Boli"/>
+                    <Button Content="Stop write" HorizontalAlignment="Left" Margin="405,15,0,0" VerticalAlignment="Top" Width="99" Height="29" FontFamily="MV Boli"/>
+                    <Button Content="Show visual" HorizontalAlignment="Left" Margin="196,15,0,0" VerticalAlignment="Top" Width="93" Height="29" FontFamily="MV Boli"/>
+                    <Button Content="Save" HorizontalAlignment="Left" Margin="513,15,0,0" VerticalAlignment="Top" Width="103" Height="29" FontFamily="MV Boli"/>
+                    <Button Content="Exit" HorizontalAlignment="Left" Margin="623,16,0,0" VerticalAlignment="Top" Width="103" Height="29" FontFamily="MV Boli"/>
+                    <GroupBox Header="Simple" HorizontalAlignment="Left" Height="84" Margin="201,50,0,0" VerticalAlignment="Top" Width="476" FontSize="18" FontFamily="Nueva Std Cond"/>
+                    <GroupBox Header="Note table" HorizontalAlignment="Left" Height="94" Margin="201,158,0,0" VerticalAlignment="Top" Width="476" FontFamily="Nueva Std Cond" FontSize="18"/>
+                    <Button Name="Stop_playing" Content="Stop playing" HorizontalAlignment="Left" Margin="213,85,0,0" VerticalAlignment="Top" Width="74" FontSize="12" FontFamily="MV Boli" Height="31" Click="Stop_playing_Click"/>
+                    <ComboBox Name="WaveTypeSimple" HorizontalAlignment="Left" Margin="290,85,0,0" VerticalAlignment="Top" Width="87" Height="31" SelectedIndex="0" SelectionChanged="WaveTypeSimple_SelectionChanged">
                         <TextBlock>Sin</TextBlock>
                         <TextBlock>Square</TextBlock>
                         <TextBlock>Triangle</TextBlock>
                         <TextBlock>SawTooth</TextBlock>
                         <TextBlock>White</TextBlock>
                         <TextBlock>Pink</TextBlock>
-                        <TextBlock>Sweep</TextBlock>
                     </ComboBox>
-                    <TextBox Name="SimpleFrequency" HorizontalAlignment="Left" Height="31" Margin="405,85,0,0" TextWrapping="Wrap" Text="Frequency..." VerticalAlignment="Top" Width="93" FontSize="14"/>
-                    <TextBox Name="SimpleTime" HorizontalAlignment="Left" Height="31" Margin="507,85,0,0" TextWrapping="Wrap" Text="Time..." VerticalAlignment="Top" Width="68" FontSize="14"/>
+                    <TextBox Name="SimpleFrequency" HorizontalAlignment="Left" Height="31" Margin="386,85,0,0" TextWrapping="Wrap" Text="440" VerticalAlignment="Top" Width="64" FontSize="14" TextChanged="SimpleFrequency_TextChanged"/>
+                    <TextBox Name="SimpleTime" HorizontalAlignment="Left" Height="31" Margin="463,84,0,0" TextWrapping="Wrap" Text="Time..." VerticalAlignment="Top" Width="42" FontSize="14"/>
+                    <ComboBox x:Name="WaveTypeSimple_Copy" HorizontalAlignment="Left" Margin="218,199,0,0" VerticalAlignment="Top" Width="87" Height="31" SelectedIndex="0">
+                        <TextBlock><Run Text="Sin"/></TextBlock>
+                        <TextBlock><Run Text="Square"/></TextBlock>
+                        <TextBlock><Run Text="Triangle"/></TextBlock>
+                        <TextBlock><Run Text="SawTooth"/></TextBlock>
+                        <TextBlock><Run Text="White"/></TextBlock>
+                        <TextBlock><Run Text="Pink"/></TextBlock>
+                        <TextBlock><Run Text="Sweep"/></TextBlock>
+                    </ComboBox>
+                    <Slider HorizontalAlignment="Left" Margin="31,158,0,0" VerticalAlignment="Top" Width="137" Minimum="0" Maximum="1" Value="1" TickPlacement="Both" TickFrequency="0.1" ValueChanged="ApplicationVolum_ValueChanged"/>
+                    <Label Content="Volume" HorizontalAlignment="Left" Margin="75,130,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Slider HorizontalAlignment="Left" Margin="31,222,0,0" VerticalAlignment="Top" Width="137"  Maximum="1" Value="1" TickPlacement="Both" TickFrequency="0.1"/>
+                    <Label Content="Stereo" HorizontalAlignment="Left" Margin="75,182,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <CheckBox Name="Main_Gain_ADSR_Box" Content="Use amplitude ADSR" HorizontalAlignment="Left" Margin="31,331,0,0" VerticalAlignment="Top" FontSize="14" />
+                    <GroupBox Header="Oscillators A" HorizontalAlignment="Left" Height="150" Margin="731,10,0,0" VerticalAlignment="Top" Width="249" FontFamily="Nueva Std Cond" FontSize="18"/>
+                    <GroupBox Header="Oscillators B" HorizontalAlignment="Left" Height="150" Margin="996,10,0,0" VerticalAlignment="Top" Width="255" FontFamily="Nueva Std Cond" FontSize="18"/>
+                    <GroupBox Header="Mix" HorizontalAlignment="Left" Height="150" Margin="1256,10,0,0" VerticalAlignment="Top" Width="131" FontFamily="Nueva Std Cond" FontSize="18"/>
+                    <GroupBox Header="AMP-A  ADSR" HorizontalAlignment="Left" Height="214" Margin="201,264,0,0" VerticalAlignment="Top" Width="171" FontSize="18" FontFamily="Nueva Std Cond"/>
+                    <GroupBox Header="Frequency ADSR - A" HorizontalAlignment="Left" Height="214" Margin="581,264,0,0" VerticalAlignment="Top" Width="193" FontSize="18" FontFamily="Nueva Std Cond"/>
+                    <GroupBox Header="LFO A" HorizontalAlignment="Left" Height="214" Margin="1001,264,0,0" VerticalAlignment="Top" Width="182" FontFamily="Nueva Std Cond" FontSize="18"/>
+                    <GroupBox Header="LFO B" HorizontalAlignment="Left" Height="214" Margin="1211,264,0,0" VerticalAlignment="Top" Width="176" FontSize="18" FontFamily="Nueva Std Cond"/>
+                    <GroupBox Header="Filter A" HorizontalAlignment="Left" Height="91" Margin="685,161,0,0" VerticalAlignment="Top" Width="348" FontFamily="Nueva Std Cond" FontSize="18"/>
+                    <GroupBox Header="Filter B" HorizontalAlignment="Left" Height="94" Margin="1050,158,0,0" VerticalAlignment="Top" Width="337" FontFamily="Nueva Std Cond" FontSize="18"/>
+                    <GroupBox Header="Frequency ADSR - B" HorizontalAlignment="Left" Height="214" Margin="788,264,0,0" VerticalAlignment="Top" Width="193" FontSize="18" FontFamily="Nueva Std Cond"/>
+                    <GroupBox Header="AMP-B  ADSR" HorizontalAlignment="Left" Height="214" Margin="396,264,0,0" VerticalAlignment="Top" Width="171" FontSize="18" FontFamily="Nueva Std Cond"/>
+                    <Slider Name="AMP_A_ADSR_A" HorizontalAlignment="Left" Margin="154,375,0,0" VerticalAlignment="Top" Width="153" RenderTransformOrigin="0.5,0.5" TickPlacement="Both" TickFrequency="0.4" Height="32" Minimum="1" Maximum="5">
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Slider Name="AMP_A_ADSR_D" HorizontalAlignment="Left" Margin="198,375,0,0" VerticalAlignment="Top" Width="154" RenderTransformOrigin="0.5,0.5" TickPlacement="Both" TickFrequency="0.4" Minimum="1" Maximum="5" Height="33" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Slider Name="AMP_A_ADSR_S" HorizontalAlignment="Left" Margin="233,377,0,0" VerticalAlignment="Top" Width="153" RenderTransformOrigin="0.5,0.5" Minimum="0" Maximum="1" Value="0.4" TickPlacement="Both" TickFrequency="0.2" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Slider Name="AMP_A_ADSR_R" HorizontalAlignment="Left" Margin="268,377,0,0" VerticalAlignment="Top" Width="151" RenderTransformOrigin="0.5,0.5" TickPlacement="Both" TickFrequency="0.4" Height="32" Minimum="1" Maximum="5" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Slider HorizontalAlignment="Left" Margin="460,377,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.5,0.5" TickPlacement="Both" TickFrequency="1" Height="31" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Slider HorizontalAlignment="Left" Margin="429,377,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.5,0.5" Minimum="0" Maximum="1" Value="0.4" TickPlacement="Both" TickFrequency="0.2">
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Slider HorizontalAlignment="Left" Margin="398,377,0,0" VerticalAlignment="Top" Width="151" RenderTransformOrigin="0.5,0.5" TickPlacement="Both" TickFrequency="1" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Slider HorizontalAlignment="Left" Margin="361,377,0,0" VerticalAlignment="Top" Width="151" RenderTransformOrigin="0.5,0.5" TickPlacement="Both" TickFrequency="1" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <CheckBox Name="Main_Frequency_ADSR_Box"  Content="Use frequency ADSR" HorizontalAlignment="Left" Margin="31,366,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <CheckBox Content="Use filters" HorizontalAlignment="Left" Margin="31,403,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <CheckBox Content="Use LFO" HorizontalAlignment="Left" Margin="31,436,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Slider HorizontalAlignment="Left" Margin="535,377,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.5,0.5" TickPlacement="Both" TickFrequency="1" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Slider HorizontalAlignment="Left" Margin="576,377,0,0" VerticalAlignment="Top" Width="151" RenderTransformOrigin="0.5,0.5" TickPlacement="Both" TickFrequency="1" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Slider HorizontalAlignment="Left" Margin="619,377,0,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.5,0.5" Minimum="20" Maximum="3000" Value="440" TickPlacement="Both" TickFrequency="100">
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Slider HorizontalAlignment="Left" Margin="659,377,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.5,0.5" TickPlacement="Both" TickFrequency="1" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Slider HorizontalAlignment="Left" Margin="752,377,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.5,0.5" TickPlacement="Both" TickFrequency="1" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Slider HorizontalAlignment="Left" Margin="792,377,0,0" VerticalAlignment="Top" Width="151" RenderTransformOrigin="0.5,0.5" TickPlacement="Both" TickFrequency="1" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Slider HorizontalAlignment="Left" Margin="830,377,0,0" VerticalAlignment="Top" Width="151" RenderTransformOrigin="0.5,0.5" Minimum="20" Maximum="3000" Value="440" TickPlacement="Both" TickFrequency="100">
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Slider HorizontalAlignment="Left" Margin="868,377,0,0" VerticalAlignment="Top" Width="151" RenderTransformOrigin="0.5,0.5" TickPlacement="Both" TickFrequency="1" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Label Content="A" HorizontalAlignment="Left" Margin="221,285,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="D" HorizontalAlignment="Left" Margin="265,285,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="S" HorizontalAlignment="Left" Margin="299,285,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="R" HorizontalAlignment="Left" Margin="336,285,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="A" HorizontalAlignment="Left" Margin="427,285,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="D" HorizontalAlignment="Left" Margin="465,285,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="S" HorizontalAlignment="Left" Margin="497,285,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="R" HorizontalAlignment="Left" Margin="527,285,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="A" HorizontalAlignment="Left" Margin="602,285,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="D" HorizontalAlignment="Left" Margin="643,285,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="S" HorizontalAlignment="Left" Margin="685,285,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="R" HorizontalAlignment="Left" Margin="726,285,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="A" HorizontalAlignment="Left" Margin="819,285,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="D" HorizontalAlignment="Left" Margin="859,285,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="S" HorizontalAlignment="Left" Margin="897,285,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="R" HorizontalAlignment="Left" Margin="935,285,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Slider Name ="SimpleGainSlider" HorizontalAlignment="Left" Margin="524,86,0,0" VerticalAlignment="Top" Width="143" Minimum="0" Maximum="1" Value="0.2" TickPlacement="Both" TickFrequency="0.1" ValueChanged="SimpleGain_ValueChanged"/>
+                    <Label Content="Gain" HorizontalAlignment="Left" Margin="574,58,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="Gain" HorizontalAlignment="Left" Margin="608,172,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Slider HorizontalAlignment="Left" Margin="591,200,0,0" VerticalAlignment="Top" Width="76" Minimum="0" Maximum="1" Value="0.2" TickPlacement="Both" TickFrequency="0.1"/>
+                    <Slider HorizontalAlignment="Left" Margin="31,283,0,0" VerticalAlignment="Top" Width="137" Minimum="0"  Maximum="1" Value="1" TickPlacement="Both" TickFrequency="0.1"/>
+                    <Label Content="Left" HorizontalAlignment="Left" Margin="26,194,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="Right" HorizontalAlignment="Left" Margin="26,252,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Button x:Name="Stop_playing_Copy" Content="Stop playing" HorizontalAlignment="Left" Margin="109,16,0,0" VerticalAlignment="Top" Width="74" FontSize="12" FontFamily="MV Boli" Height="28"/>
+                    <Slider HorizontalAlignment="Left" Margin="1243,88,0,0" VerticalAlignment="Top" Width="105" RenderTransformOrigin="0.5,0.5" Minimum="0" Maximum="1" Value="0.4" TickPlacement="Both" TickFrequency="0.2" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Slider HorizontalAlignment="Left" Margin="1301,88,0,0" VerticalAlignment="Top" Width="105" RenderTransformOrigin="0.5,0.5" Minimum="0" Maximum="1" Value="0.4" TickPlacement="Both" TickFrequency="0.2" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Label Content="A" HorizontalAlignment="Left" Margin="1286,23,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="B" HorizontalAlignment="Left" Margin="1353,23,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <ComboBox x:Name="WaveTypeSimple_Copy1" HorizontalAlignment="Left" Margin="750,48,0,0" VerticalAlignment="Top" Width="87" Height="31" SelectedIndex="0" SelectionChanged="WaveTypeSimple_SelectionChanged">
+                        <TextBlock><Run Text="Sin"/></TextBlock>
+                        <TextBlock><Run Text="Square"/></TextBlock>
+                        <TextBlock><Run Text="Triangle"/></TextBlock>
+                        <TextBlock><Run Text="SawTooth"/></TextBlock>
+                        <TextBlock><Run Text="White"/></TextBlock>
+                        <TextBlock><Run Text="Pink"/></TextBlock>
+                    </ComboBox>
+                    <TextBox x:Name="SimpleFrequency_Copy" HorizontalAlignment="Left" Height="31" Margin="846,48,0,0" TextWrapping="Wrap" Text="440" VerticalAlignment="Top" Width="93" FontSize="14" TextChanged="SimpleFrequency_TextChanged"/>
+                    <CheckBox Content="Use filter A" HorizontalAlignment="Left" Margin="750,83,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <CheckBox Content="Use filter B" HorizontalAlignment="Left" Margin="750,102,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <CheckBox Content="Use LFO A" HorizontalAlignment="Left" Margin="750,119,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <CheckBox Content="Use LFO B" HorizontalAlignment="Left" Margin="750,136,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Slider HorizontalAlignment="Left" Margin="846,112,0,0" VerticalAlignment="Top" Width="93" Minimum="0" Maximum="1" Value="0.2" TickPlacement="Both" TickFrequency="0.1"/>
+                    <Label Content="Gain" HorizontalAlignment="Left" Margin="863,82,0,0" VerticalAlignment="Top" FontSize="14" Width="45"/>
+                    <ComboBox x:Name="WaveTypeSimple_Copy2" HorizontalAlignment="Left" Margin="1018,50,0,0" VerticalAlignment="Top" Width="87" Height="31" SelectedIndex="0" SelectionChanged="WaveTypeSimple_SelectionChanged">
+                        <TextBlock><Run Text="Sin"/></TextBlock>
+                        <TextBlock><Run Text="Square"/></TextBlock>
+                        <TextBlock><Run Text="Triangle"/></TextBlock>
+                        <TextBlock><Run Text="SawTooth"/></TextBlock>
+                        <TextBlock><Run Text="White"/></TextBlock>
+                        <TextBlock><Run Text="Pink"/></TextBlock>
+                    </ComboBox>
+                    <TextBox x:Name="SimpleFrequency_Copy1" HorizontalAlignment="Left" Height="31" Margin="1138,50,0,0" TextWrapping="Wrap" Text="440" VerticalAlignment="Top" Width="93" FontSize="14" TextChanged="SimpleFrequency_TextChanged"/>
+                    <CheckBox Content="Use filter A" HorizontalAlignment="Left" Margin="1018,85,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <CheckBox Content="Use filter B" HorizontalAlignment="Left" Margin="1018,104,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <CheckBox Content="Use LFO A" HorizontalAlignment="Left" Margin="1018,119,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <CheckBox Content="Use LFO B" HorizontalAlignment="Left" Margin="1018,137,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Slider HorizontalAlignment="Left" Margin="1138,112,0,0" VerticalAlignment="Top" Width="93" Minimum="0" Maximum="1" Value="0.2" TickPlacement="Both" TickFrequency="0.1"/>
+                    <Label Content="Gain" HorizontalAlignment="Left" Margin="1165,84,0,0" VerticalAlignment="Top" FontSize="14" Width="45"/>
+                    <ComboBox x:Name="FilterType_A" HorizontalAlignment="Left" Margin="701,200,0,0" VerticalAlignment="Top" Width="73" Height="31" SelectedIndex="0" SelectionChanged="FilterType_A_SelectionChanged" >
+                        <TextBlock><Run Text="Low Pass"/></TextBlock>
+                        <TextBlock><Run Text="High Pass"/></TextBlock>
+                        <TextBlock><Run Text="Band Pass"/></TextBlock>
+                        <TextBlock><Run Text="Band Stop"/></TextBlock>
+                    </ComboBox>
+                    <TextBox x:Name="SimpleFrequency_Copy2" HorizontalAlignment="Left" Height="31" Margin="787,200,0,0" TextWrapping="Wrap" Text="440" VerticalAlignment="Top" Width="69" FontSize="14" />
+                    <TextBox x:Name="SimpleFrequency_Copy3" HorizontalAlignment="Left" Height="31" Margin="863,200,0,0" TextWrapping="Wrap" Text="440" VerticalAlignment="Top" Width="64" FontSize="14" />
+                    <CheckBox Content="Use ADSR A" HorizontalAlignment="Left" Margin="932,208,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <CheckBox Content="Use ADSR B" HorizontalAlignment="Left" Margin="1291,205,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <TextBox x:Name="SimpleFrequency_Copy4" HorizontalAlignment="Left" Height="31" Margin="1222,200,0,0" TextWrapping="Wrap" Text="440" VerticalAlignment="Top" Width="64" FontSize="14" />
+                    <TextBox x:Name="SimpleFrequency_Copy5" HorizontalAlignment="Left" Height="31" Margin="1138,200,0,0" TextWrapping="Wrap" Text="440" VerticalAlignment="Top" Width="69" FontSize="14" />
+                    <ComboBox x:Name="FilterType_B" HorizontalAlignment="Left" Margin="1060,200,0,0" VerticalAlignment="Top" Width="73" Height="31" SelectedIndex="0" SelectionChanged="FilterType_B_SelectionChanged">
+                        <TextBlock><Run Text="Low Pass"/></TextBlock>
+                        <TextBlock><Run Text="High Pass"/></TextBlock>
+                        <TextBlock><Run Text="Band Pass"/></TextBlock>
+                        <TextBlock><Run Text="Band Stop"/></TextBlock>
+                    </ComboBox>
+                    <ComboBox x:Name="WaveTypeSimple_Copy5" HorizontalAlignment="Left" Margin="1046,285,0,0" VerticalAlignment="Top" Width="87" Height="31" SelectedIndex="0">
+                        <TextBlock><Run Text="Sin"/></TextBlock>
+                        <TextBlock><Run Text="Square"/></TextBlock>
+                        <TextBlock><Run Text="Triangle"/></TextBlock>
+                        <TextBlock><Run Text="SawTooth"/></TextBlock>
+                    </ComboBox>
+                    <ComboBox x:Name="WaveTypeSimple_Copy6" HorizontalAlignment="Left" Margin="1256,285,0,0" VerticalAlignment="Top" Width="87" Height="31" SelectedIndex="0">
+                        <TextBlock><Run Text="Sin"/></TextBlock>
+                        <TextBlock><Run Text="Square"/></TextBlock>
+                        <TextBlock><Run Text="Triangle"/></TextBlock>
+                        <TextBlock><Run Text="SawTooth"/></TextBlock>
+                    </ComboBox>
+                    <Slider HorizontalAlignment="Left" Margin="974,386,0,0" VerticalAlignment="Top" Width="127" RenderTransformOrigin="0.5,0.5"  Minimum="0" Maximum="1" TickPlacement="Both" TickFrequency="0.2" Height="32" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Slider HorizontalAlignment="Left" Margin="1030,386,0,0" VerticalAlignment="Top" Width="127" RenderTransformOrigin="0.5,0.5" Minimum="0" Maximum="20" TickPlacement="Both" TickFrequency="1" Height="32"  >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Slider HorizontalAlignment="Left" Margin="1089,386,0,0" VerticalAlignment="Top" Width="127" RenderTransformOrigin="0.5,0.5" Minimum="-20" Maximum="20" TickPlacement="Both" TickFrequency="4" Height="32" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Slider HorizontalAlignment="Left" Margin="1231,386,0,0" VerticalAlignment="Top" Width="127" RenderTransformOrigin="0.5,0.5" Minimum="0" Maximum="20" TickPlacement="Both" TickFrequency="1" Height="32" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Slider HorizontalAlignment="Left" Margin="1284,386,-4,0" VerticalAlignment="Top" Width="127" RenderTransformOrigin="0.5,0.5" Minimum="-20" Maximum="20" TickPlacement="Both" TickFrequency="4" Height="32" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Label Content="Gain" HorizontalAlignment="Left" Margin="1020,314,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Slider HorizontalAlignment="Left" Margin="1184,386,0,0" VerticalAlignment="Top" Width="127" RenderTransformOrigin="0.5,0.5"  Minimum="0" Maximum="1" TickPlacement="Both" TickFrequency="0.2" Height="32" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.575"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <Label Content="Gain" HorizontalAlignment="Left" Margin="1230,315,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="Frequency" HorizontalAlignment="Left" Margin="1060,314,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="Frequency" HorizontalAlignment="Left" Margin="1262,316,0,0" VerticalAlignment="Top" FontSize="14"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Note table">

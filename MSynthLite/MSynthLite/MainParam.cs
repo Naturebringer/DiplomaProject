@@ -9,7 +9,7 @@ using System.Threading;
 
 namespace MSynthLite
 {
-    class MainParam
+    public class MainParam
     {
         public SignalGeneratorType WaveForm;
         public double Frequency;
